@@ -287,5 +287,5 @@ function plot_imgs(x::AbstractMatrix, y_pred::Array{Int,1},
         title!(p, "$(y_pred[i])")
         push!(plots, p)
     end
-    savefig(plot(plots..., layout=(4, 4), legend=false), results_dir*"/imgs.png")
+    savefig(plot(plots..., layout=(4, 4), legend=false), results_dir*"/imges.png")
 end

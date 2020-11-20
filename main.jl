@@ -15,10 +15,10 @@ include("utils.jl")
 batch_size    = 64
 hiden_layers  = [16, 16]
 pop_size      = 8
-num_epochs    = 30
+num_epochs    = 100
 σ_init_params = 0.1
-σ_exp_noise   = 0.01
-lr            = 0.01
+σ_exp_noise   = 0.001
+lr            = 0.001
 results_dir   = "./results"
 # - - - - - - - - - - -#
 
