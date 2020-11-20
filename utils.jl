@@ -263,7 +263,7 @@ end
 ### Plotting ###
 
 function plot_metrics(loss::Array{Float64,1}, acc::Array{Float64,1},
-                      results_dir::String)
+                      results_dir::String="")
     #=
     Plot a chart with the loss and the accuracy of the model
     at each epoch of the evolution process and save it as 
@@ -271,11 +271,15 @@ function plot_metrics(loss::Array{Float64,1}, acc::Array{Float64,1},
     =#
     p_loss = plot(loss, label="loss")
     p_acc = plot(acc .* 100, label="accuracy", legend=:bottomright)
-    savefig(plot(p_loss, p_acc, layout=(2, 1)), results_dir*"/metrics.png")
+    p = plot(p_loss, p_acc, layout=(2, 1))
+    if results_dir != ""
+        savefig(p, results_dir*"/metrics.png")
+    end
+    p
 end
 
 function plot_imgs(x::AbstractMatrix, y_pred::Array{Int,1},
-                   results_dir::String)
+                   results_dir::String="")
     #=
     Plot a grid of 4x4 images from the dataset with the predictions
     of the model for the image and save it as .png file
@@ -287,5 +291,9 @@ function plot_imgs(x::AbstractMatrix, y_pred::Array{Int,1},
         title!(p, "$(y_pred[i])")
         push!(plots, p)
     end
-    savefig(plot(plots..., layout=(4, 4), legend=false), results_dir*"/imges.png")
+    p = plot(plots..., layout=(4, 4), legend=false)
+    if results_dir != ""
+        savefig(p, results_dir*"/imges.png")
+    end
+    p
 end
