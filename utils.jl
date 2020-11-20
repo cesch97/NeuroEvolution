@@ -31,17 +31,14 @@ function onehot(y::Vector{Int})
     Float32.(y_onehot)
 end
 
-function onecold(y_onehot::AbstractMatrix, from_zero::Bool=true)
+function onecold(y_onehot::AbstractMatrix)
     #=
     decode one-hot matrix to an integer vector
-    if from_zero is true the minimum integer is 0
-    else the minimum integer is 1
     =#
     n_features = size(y_onehot, 2)
     y = Int[]
-    from_zero ? base = 1 : base = 0
     for i in 1:size(y_onehot, 1)
-        push!(y, argmax(y_onehot[i, :]) - base)
+        push!(y, argmax(y_onehot[i, :]) - 1)
     end
     y
 end
