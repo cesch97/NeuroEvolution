@@ -27,7 +27,7 @@ Anyway in order to update the parameters of our network we need something simila
 - By keeping track of all the directions that we tried in the population (keeping track of the random noise) and knowing the advantage of every movement we took we can compute an approximation of the gradient
   
 ### Implementation
-- I could have used the packages Statistics, Flux, Lathe and avoid writing all the functions myself in the "utils.jl" file but I wanted to show how powerfull is Julia and how easy is to implement everything by yourself.
+- I could have used the packages Statistics, Flux, Lathe and avoid writing all the functions myself in the "utils.jl" file but I wanted to show how powerful is Julia and how easy is to implement everything by yourself.
 
 ### Results
 In the **results** directory there are the output of a 100 epoch training that took about 40 mins on my laptop and reached an accurcy of 89% on the test set. I also put into the directory "examples" some random images from the test set and the model predictions for each of them.
