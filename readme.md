@@ -16,7 +16,7 @@ Anyway in order to update the parameters of our network we need something simila
   
 ### Intuition  
 1. At first we create one model initialized with random parameters sampled from a normal distribution of *mean* and *std* known.
-2. Then we create a **population** by applying **random mutations** to the model and making a **population**, a set of models slighty different from each others. 
+2. Then applying **random mutations** to the model we make a **population**, a set of models slighty different from each others. 
 3. We measure how each model performed over the same batch of data and we store this information into the **fitness** vector, we normalize the vector by subtracting it's mean and dividing for its standard deviation to get the **advantage** vector
 4. Then we approximate the **gradient** as a weighted sum between each random noise applied and the advantage of moving in that direction.
 5. The model's paramaters are then updated by Stochastic Gradient Descent. 
