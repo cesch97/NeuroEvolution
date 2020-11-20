@@ -23,13 +23,7 @@ function onehot(y::Vector{Int})
     #=
     Apply one-hot encoding to a vector of integers
     =#
-    if minimum(y) == 0
-        n_features = maximum(y) + 1
-    elseif minimum(y) == 1
-        n_features = maximum(y)
-    else
-        error("onehot: minimum value is not 0 or 1")
-    end
+    n_features = maximum(y) + 1
     y_onehot = zeros(length(y), n_features)
     for i in eachindex(y)
         y_onehot[i, y[i] + 1] = 1.
