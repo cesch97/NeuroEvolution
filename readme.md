@@ -12,7 +12,7 @@ To run this project you need: [Julia](https://julialang.org/) v1.0 or higher and
 ## Getting Started
 
 The most common approaches to train a neural network make use of  backpropagation to track the gradient. Another way is to employ evolution strategies, when it comes to supervised learning evolution approaches are inefficient compared to backpropagation but their freedom from derivability make them suitable for complex scenarios when it is impossible to track gradient (like Reinforcement learning).  
-Anyway in order to update the parameters of our network we need something similar to the gradient that tells us the direction and the magnitude of the changes that we should apply to each parameter to get a better model. Instead of the real gradient (which can be computed only throw backpropagation) we will compute an approximation and then we use it to update our model's parameters throw Stochastic Gradient Descent (SGD).  
+Anyway in order to update the parameters of our network we need something similar to the gradient that tells us the direction and the magnitude of the changes that we should apply to each parameter to get a better model. Instead of the real gradient (which can be computed only through backpropagation) we will compute an approximation and then we use it to update our model's parameters through Stochastic Gradient Descent (SGD).  
   
 ### Intuition  
 1. At first we create one model initialized with random parameters sampled from a normal distribution of *mean* and *std* known.
