@@ -192,8 +192,8 @@ function compute_grad_approx(exp_noise::Array{Array{NamedTuple,1},1}, advantage:
     =#
     grad = NamedTuple[]
     for i in 1:length(exp_noise[1])
-        w_grad = sum([exp_noise[j][i].w .* advantage[j] for j in 1:length(exp_noise)])
-        b_grad = sum([exp_noise[j][i].b .* advantage[j] for j in 1:length(exp_noise)])
+        w_grad = sum([exp_noise[j][i].w .* advantage[j] for j in 1:length(advantage)])
+        b_grad = sum([exp_noise[j][i].b .* advantage[j] for j in 1:length(advantage)])
         push!(grad, (w = w_grad, b = b_grad))
     end
     grad
@@ -205,9 +205,10 @@ function sgd_update!(model::Array{LinearLayer,1}, grad::Array{NamedTuple,1},
     Using the approximated gradient apply one step of 
     Sstochastic Gradient Descent over the model parameters
     =#
+    α = Float32.(lr / (pop_size * σ))
     for i in 1:length(model)
-        model[i].w -= grad[i].w .* Float32.(lr / (pop_size * σ))
-        model[i].b -= grad[i].b .* Float32.(lr / (pop_size * σ))
+        model[i].w -= grad[i].w .* α
+        model[i].b -= grad[i].b .* α
     end
 end
 
@@ -224,7 +225,7 @@ function evolve!(model::Array{LinearLayer,1}, batches::Array{NamedTuple,1},
         for i in eachindex(batches)
             batch = batches[i]
             # create a population by applying exp_noise
-            # to copies of the model
+            # to some copies of the model
             population = [model for i in 1:pop_size]
             exp_noise = get_exp_noise.(population, [σ])
             population = mutate.(population, exp_noise)
