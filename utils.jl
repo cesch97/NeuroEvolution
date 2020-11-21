@@ -205,7 +205,7 @@ function sgd_update!(model::Array{LinearLayer,1}, grad::Array{NamedTuple,1},
     Using the approximated gradient apply one step of 
     Sstochastic Gradient Descent over the model parameters
     =#
-    α = Float32.(lr / (pop_size * σ))
+    α = Float32(lr / (pop_size * σ))
     for i in 1:length(model)
         model[i].w -= grad[i].w .* α
         model[i].b -= grad[i].b .* α
