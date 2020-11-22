@@ -105,7 +105,7 @@ end
 
 function forward(model::Array{LinearLayer}, x::AbstractMatrix)
     #=
-    Run a forward pass of the input x throw the model
+    Run a forward pass of the input x through the model,
     the activation function is not applied to the output layer
     =#
     x = x'
